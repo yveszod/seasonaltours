@@ -27,7 +27,7 @@ $bookingDate = date('F j, Y', strtotime($tour['starts_at']));
 					</div>
 					<div class="mb-3">
 						<label class="form-label" for="booking-whatsapp-<?php echo (int) $tour['tour_slot_id']; ?>">WhatsApp number</label>
-						<input class="form-control" id="booking-whatsapp-<?php echo (int) $tour['tour_slot_id']; ?>" name="customer_whatsapp" type="tel" autocomplete="tel" maxlength="32" required>
+						<input class="form-control" id="booking-whatsapp-<?php echo (int) $tour['tour_slot_id']; ?>" name="customer_whatsapp" type="tel" autocomplete="tel" maxlength="32">
 					</div>
 					<div class="mb-3">
 						<label class="form-label" for="booking-guests-<?php echo (int) $tour['tour_slot_id']; ?>">Number of guests</label>
