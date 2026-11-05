@@ -7,7 +7,14 @@ if (isset($tours)): ?>
                 <?php foreach ($tours as $tourIndex => $tour): ?>
                     <?php $currency = $tour['currency']; ?>
                     <?php $modalId = 'tour-info-' . ($tour['tour_slot_id'] ?? $tourIndex); ?>
+                    <?php $bookingModalId = 'tour-booking-' . ($tour['tour_slot_id'] ?? $tourIndex); ?>
+                    <?php $canBook = !empty($tour['tour_slot_id']) && (int) ($tour['available'] ?? 0) > 0; ?>
                     <div class="col-md-4 pt-5 pb-5 tour-block mt-5 mt-md-0 mb-5 mb-md-0">
+                        <?php if(isset($tour['image_url'])): ?>
+                            <img
+                                src="/<?php echo htmlspecialchars($tour['image_url'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($tour['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                class="img-fluid mb-3 box-shadow rounded shadow-sm" loading="lazy">
+                        <?php endif; ?>
                         <h3 class="font-black"><?php echo $tour['name']; ?></h3>
                         <div class="seperator"></div>
                         <ul>
@@ -25,9 +32,13 @@ if (isset($tours)): ?>
                         </ul>
                         <div class="row mt-4">
                             <div class="col-6">
-                                <a class="cta-button" href="<?php echo $tour['paypal_payment_link']; ?>" rel="nofollow noopener noreferrer" target="_blank">
+                                <?php if ($canBook): ?>
+                                <button class="cta-button" type="button" data-booking-target="#<?php echo htmlspecialchars($bookingModalId, ENT_QUOTES, 'UTF-8'); ?>">
                                     Book Now
-                                </a>
+                                </button>
+                                <?php else: ?>
+                                <button class="cta-button" type="button" disabled aria-disabled="true"><?php echo !empty($tour['tour_slot_id']) ? 'Fully booked' : 'No upcoming date'; ?></button>
+                                <?php endif; ?>
                             </div>
                             <div class="col-6">
                                 <button class="cta-button info" type="button" data-bs-toggle="modal" data-bs-target="#<?php echo $modalId; ?>">
@@ -135,13 +146,18 @@ if (isset($tours)): ?>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="cta-button info" data-bs-dismiss="modal">Close</button>
-                                    <a class="cta-button" href="<?php echo $tour['paypal_payment_link']; ?>" rel="nofollow noopener noreferrer" target="_blank">
+                                    <?php if ($canBook): ?>
+                                    <button class="cta-button" type="button" data-booking-target="#<?php echo htmlspecialchars($bookingModalId, ENT_QUOTES, 'UTF-8'); ?>">
                                         Book Now
-                                    </a>
+                                    </button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php if ($canBook): ?>
+                        <?php include __DIR__ . '/booking_form.php'; ?>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>

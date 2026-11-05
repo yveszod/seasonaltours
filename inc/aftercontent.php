@@ -1,7 +1,7 @@
 <section>
     <div class="container">
         <div class="row pt-5 pb-5">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-5 mb-md-0">
                 <h3 class="font-bold">
                     Can't make the tour dates?
                 </h3>
