@@ -1,0 +1,34 @@
+{
+    "hero_features": [
+        {
+            "title": "Small Group",
+            "text": "MAX 8-10 guests",
+            "icon": "fi-rr-users-class"
+        },
+        {
+            "title": "10-12 Hours",
+            "text": "Full-day experience",
+            "icon": "fi-rr-clock"
+        },
+        {
+            "title": "Osaka Pick up and Drop off",
+            "text": "Meeting point",
+            "icon": "fi-rr-location-arrow"
+        },
+        {
+            "title": "English Guide & Private vehicle",
+            "text": "Comfortable transportation",
+            "icon": "fi-rr-car-alt"
+        },
+        {
+            "title": "Kansai Area",
+            "text": "Osaka, Kyoto, Nara",
+            "icon": "fi-rr-location-alt"
+        },
+        {
+            "title": "Easy Booking",
+            "text": "Secure and easy checkout with PayPal",
+            "icon": "fi-rr-shopping-cart"
+        }
+    ]
+}
